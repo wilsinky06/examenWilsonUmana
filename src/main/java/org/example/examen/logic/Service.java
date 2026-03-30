@@ -65,7 +65,6 @@ public class Service {
         Pacientemedicamento pm = pacienteMedicamentos.findById(pmId).orElseThrow();
         int plan = pm.getMedicamento().getPlan();
         int actuales = pm.getDosisafavor();
-        int regalias = pm.getMedicamento().getRegalias();
 
         if(actuales < plan){
             return "No hay dosis suficientes a favor para entregar";

@@ -84,9 +84,9 @@
                 <tbody>
                 <tr th:each="pm : ${medicamentos}">
                     <td th:text="${pm.medicamento.nombre}"></td>
-                    <td th:text="${pm.medicamento.plan + ' + 1'}"></td>
+                    <td th:text="${pm.medicamento.plan + ' + ' + pm.medicamento.regalias}"></td>
                     <td th:text="${pm.dosisafavor}"></td>
-                    <td th:text="${pm.dosisafavor / pm.medicamento.plan}"></td>
+                    <td th:text="${(pm.dosisafavor / pm.medicamento.plan) * pm.medicamento.regalias}"></td>
                     <td th:text="${pm.medicamento.plan - (pm.dosisafavor % pm.medicamento.plan)} + ' dosis'"></td>
                 </tr>
                 </tbody>
