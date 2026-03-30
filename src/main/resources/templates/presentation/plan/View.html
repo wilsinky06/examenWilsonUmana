@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/springsecurity6">
+<head th:replace="~{presentation/fragments :: head}"></head>
+<body>
+<header th:replace="~{presentation/fragments :: header}"></header>
+<nav th:replace="~{presentation/fragments :: nav}"></nav>
+
+<main>
+    <div class="plan-container">
+
+        <div class="farmacia-titulo">
+            Farmacia: <span th:text="${farmacia != null ? farmacia.nombre : ''}"></span>
+        </div>
+
+        <form action="/presentation/plan/buscar" method="post">
+            <div class="buscar-row">
+                <label>Paciente:</label>
+                <input type="text" name="cedula" th:value="${cedulaBuscada}"/>
+                <input type="submit" value="Buscar"/>
+                <span class="paciente-nombre"
+                      th:if="${paciente != null}"
+                      th:text="${paciente.nombre}"></span>
+                <span class="error"
+                      th:if="${cedulaBuscada != null and !cedulaBuscada.isEmpty() and paciente == null}">
+                    Paciente no encontrado
+                </span>
+                <span th:if="${cedulaBuscada == null or cedulaBuscada.isEmpty()}">
+                    No se ha seleccionado un paciente
+                </span>
+            </div>
+        </form>
+
+        <div th:if="${paciente != null and medicamentos != null and !medicamentos.isEmpty()}">
+
+            <div th:if="${error}" class="error">
+                <p th:text="${error}"></p>
+            </div>
+
+            <form action="/presentation/plan/registrar" method="post">
+                <div class="medicamento-row">
+                    <label>Medicamento:</label>
+                    <select name="pmId">
+                        <option th:each="pm : ${medicamentos}"
+                                th:value="${pm.id}"
+                                th:text="${pm.medicamento.nombre +
+                                              ' (' + pm.medicamento.plan +
+                                              ' + ' + pm.medicamento.regalias +
+                                              ') [' + pm.dosisafavor + ']'}">
+                        </option>
+                    </select>
+                    <label>Cant. Dosis:</label>
+                    <input type="number" name="cantidad" value="1" min="1"/>
+                    <input type="submit" value="Registrar" class="btn-registrar"/>
+                </div>
+            </form>
+
+            <form action="/presentation/plan/entregar" method="post">
+                <div class="medicamento-row">
+                    <select name="pmId">
+                        <option th:each="pm : ${medicamentos}"
+                                th:value="${pm.id}"
+                                th:text="${pm.medicamento.nombre +
+                                              ' (' + pm.medicamento.plan +
+                                              ' + ' + pm.medicamento.regalias +
+                                              ') [' + pm.dosisafavor + ']'}">
+                        </option>
+                    </select>
+                    <input type="submit" value="Entregar" class="btn-entregar"/>
+                </div>
+            </form>
+
+            <br/>
+            <table>
+                <thead>
+                <tr>
+                    <th>Medicamento</th>
+                    <th>Plan</th>
+                    <th>Dosis a favor</th>
+                    <th>Regalías disponibles</th>
+                    <th>Restante para próximo canje</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="pm : ${medicamentos}">
+                    <td th:text="${pm.medicamento.nombre}"></td>
+                    <td th:text="${pm.medicamento.plan + ' + 1'}"></td>
+                    <td th:text="${pm.dosisafavor}"></td>
+                    <td th:text="${pm.dosisafavor / pm.medicamento.plan}"></td>
+                    <td th:text="${pm.medicamento.plan - (pm.dosisafavor % pm.medicamento.plan)} + ' dosis'"></td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</main>
+
+<footer th:replace="~{presentation/fragments :: footer}"></footer>
+</body>
+</html>
