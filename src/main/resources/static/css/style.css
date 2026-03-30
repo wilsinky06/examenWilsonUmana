@@ -1,16 +1,16 @@
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
 
 .nav-bar {
-    background-color: #003366;
+    background-color: #1a3a6b;
     padding: 8px 20px;
     text-align: center;
 }
 .nav-bar a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; }
 .nav-bar a:hover { color: #ffcc00; }
-.nav-bar span { color: #ffcc00; font-weight: bold; margin-left: 15px; }
+.nav-bar span { color: #ffcc00; font-weight: bold; margin-right: 15px; }
 
 .footer {
-    background-color: #003366;
+    background-color: #1a3a6b;
     color: white;
     text-align: center;
     padding: 10px;
@@ -23,7 +23,7 @@
 main {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     padding: 30px;
     padding-bottom: 60px;
 }
@@ -31,29 +31,95 @@ main {
 .login-box {
     background-color: #f2f2f2;
     border: 1px solid #ccc;
-    padding: 20px;
+    padding: 25px;
     width: 280px;
     text-align: center;
+    margin: 0 auto;
+}
+
+.login-box label { color: #cc3300; font-weight: bold; font-size: 13px; }
+.login-box input[type=text],
+.login-box input[type=password] {
+    width: 100%; padding: 5px; margin: 3px 0 10px;
+    border: 1px solid #ccc;
+}
+.login-box input[type=submit] {
+    background-color: #1a3a6b; color: white;
+    border: none; padding: 6px 20px; cursor: pointer;
+    margin-top: 5px;
 }
 
 .section-title {
-    background-color: #003366;
+    background-color: #1a3a6b;
     color: white;
     padding: 6px;
     font-weight: bold;
     margin-bottom: 15px;
+    font-size: 14px;
 }
 
-label { font-size: 13px; color: #003366; font-weight: bold; }
-input[type=text], input[type=password], input[type=number] {
-    width: 100%; padding: 5px; margin: 5px 0 10px; border: 1px solid #ccc;
+.plan-container {
+    width: 70%;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border: 1px solid #ccc;
 }
-input[type=submit], .btn {
-    background-color: #003366; color: white;
-    border: none; padding: 6px 15px; cursor: pointer;
+
+.farmacia-titulo {
+    color: #cc3300;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
 }
-.error { color: red; font-size: 13px; margin-top: 8px; }
+
+.farmacia-titulo span {
+    color: #1a3a6b;
+}
+
+.buscar-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.buscar-row label { color: #cc3300; font-weight: bold; }
+.buscar-row input[type=text] { padding: 4px; border: 1px solid #ccc; }
+.buscar-row input[type=submit] {
+    background-color: #cc3300; color: white;
+    border: none; padding: 4px 12px; cursor: pointer;
+}
+
+.paciente-nombre { color: #1a3a6b; font-weight: bold; }
+
+.medicamento-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.medicamento-row label { color: #cc3300; font-weight: bold; }
+
+select { padding: 4px; border: 1px solid #ccc; }
+
+input[type=number] { width: 60px; padding: 4px; border: 1px solid #ccc; }
+
+.btn-registrar {
+    background-color: #1a3a6b; color: white;
+    border: none; padding: 5px 12px; cursor: pointer;
+}
+
+.btn-entregar {
+    background-color: #cc3300; color: white;
+    border: none; padding: 5px 12px; cursor: pointer;
+}
+
+.error { color: #cc3300; font-size: 13px; margin-top: 8px; }
 
 table { width: 100%; border-collapse: collapse; font-size: 13px; }
-table th { background-color: #003366; color: white; padding: 6px 10px; }
+table th { background-color: #1a3a6b; color: white; padding: 6px 10px; }
 table td { padding: 5px 10px; border-bottom: 1px solid #ddd; }

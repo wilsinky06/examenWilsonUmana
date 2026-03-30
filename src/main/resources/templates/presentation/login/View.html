@@ -6,16 +6,21 @@
 <nav th:replace="~{presentation/fragments :: nav}"></nav>
 
 <main>
-    <div class="content" style="max-width:300px; margin:30px auto;">
-        <h2>LOGIN</h2>
+    <div class="login-box">
+        <img src="/images/login.png" style="width:80px; margin-bottom:10px;"/>
         <form action="/login" method="post">
-            <label style="font-size:12px">Usuario</label><br/>
-            <input type="text" name="username" style="width:100%; margin-bottom:8px;"/><br/>
-            <label style="font-size:12px">Contraseña</label><br/>
-            <input type="password" name="password" style="width:100%; margin-bottom:8px;"/><br/>
-            <input type="submit" value="Ingresar" style="width:100%;"/>
+            <div class="section-title">INGRESO</div>
+            <div>
+                <label>Id</label>
+                <input type="text" name="username" placeholder="Id del usuario"/>
+            </div>
+            <div>
+                <label>Clave</label>
+                <input type="password" name="password" placeholder="Clave del usuario"/>
+            </div>
+            <input type="submit" value="Ingresar"/>
         </form>
-        <div th:if="${param.error}" class="error" style="margin-top:10px;">
+        <div th:if="${param.error}" class="error">
             <p>Credenciales incorrectas</p>
         </div>
     </div>

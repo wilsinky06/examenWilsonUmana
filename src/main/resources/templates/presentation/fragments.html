@@ -4,30 +4,29 @@
 
 <head th:fragment="head">
     <meta charset="UTF-8">
-    <title>Examen</title>
+    <title>Plan Paciente</title>
     <link rel="stylesheet" href="/css/style.css"/>
     <link rel="icon" href="/images/favicon.ico"/>
 </head>
 
 <header th:fragment="header">
-    <img src="/images/header.jpg" style="width:100%;"/>
+    <div style="text-align:center; padding: 10px; background-color: white;">
+        <img src="/images/header.jpg" style="width:300px; display:block; margin: 0 auto;"/>
+    </div>
 </header>
 
 <nav th:fragment="nav">
     <div class="nav-bar">
-        <!-- ADAPTAR según rutas del examen -->
         <th:block sec:authorize="isAuthenticated()">
-            <a href="/presentation/main/show">INICIO</a>
-            <a href="/logout">LOGOUT</a>
             <span sec:authentication="name"></span>
+            <a href="/logout">LOGOUT</a>
         </th:block>
     </div>
 </nav>
 
 <footer th:fragment="footer">
     <div class="footer">
-        <!-- ADAPTAR texto del footer según examen -->
-        Todos los derechos reservados . 2026
+        Todos los derechos reservados . 2026 . TotalSoft Inc. info@tsinc.com
     </div>
 </footer>
 </html>
